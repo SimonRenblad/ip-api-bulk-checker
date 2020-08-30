@@ -9,3 +9,12 @@ def Lookup(ip):
     except:
         data = {'status':'fail'}
     return data # Defaults to None if failed to get block value
+
+def LookupBatch(data):
+    try:
+        response = requests.request('POST','http://ip-api.com/batch?fields=66846719',data=json.dumps(data)).json()
+        time.sleep(5)
+    except:
+        print("exceeded throttle limit")
+    return response
+
